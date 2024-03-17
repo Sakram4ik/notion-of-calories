@@ -5,21 +5,22 @@ import {useRegisterUserMutation} from '../store/server/server.fetch';
 export default function Register() {
   const [Name, setName] = useState('');
   const [Password, setPassword] = useState('');
-  const [registerUser, {data}] = useRegisterUserMutation();
+  const [registerUser, {data,error}] = useRegisterUserMutation();
   const handler = () => {
     const body = {
-      email: 'ff',
+      email: 'fjf',
       name: Name,
       password: Password,
     };
     console.log(body);
     registerUser(body);
     console.log(data);
+    console.log(error)
   };
 
   return (
     <View>
-      <Text>gagagffffemS</Text>
+      <Text>gagagffff</Text>
       <TextInput value={Name} onChangeText={setName} placeholder="user name" />
       <TextInput
         value={Password}

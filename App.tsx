@@ -11,8 +11,8 @@ const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
+    <NavigationContainer>
+      <Provider store={store}>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
@@ -21,8 +21,8 @@ function App(): React.JSX.Element {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Products" component={Products} />
         </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
+      </Provider>
+    </NavigationContainer>
   );
 }
 export default App;
