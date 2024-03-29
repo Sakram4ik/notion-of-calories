@@ -1,5 +1,10 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-
+import {IRegistr} from '../../type/user';
+interface RegisterResponse {
+  data: any;
+  error: any;
+  isLoading: any;
+}
 export const ServerFetch = createApi({
   reducerPath: 'serverFetch',
   baseQuery: fetchBaseQuery({
@@ -7,7 +12,7 @@ export const ServerFetch = createApi({
   }),
   tagTypes: ['Post'],
   endpoints: build => ({
-    registerUser: build.mutation<any, any>({
+    registerUser: build.mutation<RegisterResponse, IRegistr>({
       query: body => ({
         url: 'registr',
         method: 'POST',

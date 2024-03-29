@@ -4,7 +4,7 @@ import {NavigationProp, ParamListBase} from '@react-navigation/native';
 
 const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
   const handler = () => {
-    navigation.navigate('Products');
+    navigation.navigate('Register');
   };
   return (
     <View>
