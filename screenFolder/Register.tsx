@@ -28,19 +28,16 @@ export default function Register({
   const [registerUser] = useRegisterUserMutation();
   const handlerRegister = async (value: IRegistr) => {
     // console.log(value)
-    try {
-      const {data, error} = await registerUser(value);
-      // console.log(data);
-      // console.log(error);
-      if (data) {
-        navigation.navigate('Home');
-      }
-      if (error) {
-        setErrorMessage(error.data.message);
-        console.log(errorMessage);
-      }
-    } catch (error) {
-      console.error('Error occurred while registering:', error);
+
+    const {data, error}: RegisterResponse = await registerUser(value);
+    // console.log(data);
+    // console.log(error);
+    if (data) {
+      navigation.navigate('Home');
+    }
+    if (error) {
+      setErrorMessage(error.data.message);
+      console.log(errorMessage);
     }
   };
 
