@@ -1,5 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {IRegister, IToken} from '../../type/user';
+import {ILogin, IRegister, IToken} from '../../type/user';
+import { RegisterResponse } from '../../type/fetch';
 
 export const ServerFetch = createApi({
   reducerPath: 'serverFetch',
@@ -9,8 +10,8 @@ export const ServerFetch = createApi({
   }),
   tagTypes: ['User'],
   endpoints: build => ({
-    registerUser: build.mutation({
-      query: (body: IRegister) => ({
+    registerUser: build.mutation<RegisterResponse, IRegister>({
+      query: (body) => ({
         url: 'auth/register',
         method: 'POST',
         headers: {
@@ -20,7 +21,7 @@ export const ServerFetch = createApi({
       }),
       invalidatesTags: ['User'],
     }),
-    Login: build.mutation({
+    Login: build.mutation<RegisterResponse, ILogin>({
       query: (body: IRegister) => ({
         url: 'auth/login',
         method: 'POST',
@@ -53,8 +54,8 @@ export const ServerFetch = createApi({
       }),
       // invalidatesTags: ['User'],
     }),
-    getUser: build.mutation({
-      query: (body: IToken) => ({
+    getUser: build.mutation<RegisterResponse, IToken>({
+      query: (body) => ({
         url: 'user/get',
         method: 'POST',
         headers: {

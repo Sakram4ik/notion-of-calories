@@ -3,10 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IToken} from '../type/user';
 import {useEffect, useState} from 'react';
 import {useGetUserMutation} from '../store/server/server.fetch';
-interface RegisterResponse {
-  data?: any;
-  error?: any;
-}
+
 export default function () {
   const [userData, setUserData] = useState<IToken>({token: ''});
   const [getUser] = useGetUserMutation();
@@ -25,7 +22,7 @@ export default function () {
 
   useEffect(() => {
     const getU = async () => {
-      const {data}: RegisterResponse = await getUser(userData);
+      const {data} = await getUser(userData).unwrap();
       console.log(data);
       return data;
     };

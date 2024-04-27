@@ -27,7 +27,7 @@ export default function Register({
   const [registerUser] = useLoginMutation();
   const handlerRegister = async (value: IRegister) => {
     setisLoadingMessage('Load');
-    const {data, error}: RegisterResponse = await registerUser(value);
+    const {data, error} = await registerUser(value).unwrap();
     console.log(value);
     // console.log(error);
     if (data) {

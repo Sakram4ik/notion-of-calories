@@ -14,7 +14,7 @@ export interface UserError {
 
 export interface RegisterResponse {
   data?: any;
-  error?: FetchBaseQueryError | SerializedError;
+  error?: {data:IError};
 }
 export interface IError {
   status: string;
