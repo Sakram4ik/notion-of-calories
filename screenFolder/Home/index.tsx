@@ -1,11 +1,17 @@
-import {Button} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import React from 'react';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 
 const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
   const handler = () => {
-    navigation.navigate('Products');
+    navigation.navigate('Register');
   };
-  return <Button title="Go it " onPress={() => handler()} />;
+
+  return (
+    <View>
+      <Button title="Go it " onPress={() => handler()} />
+      <Text />
+    </View>
+  );
 };
 export default Home;
