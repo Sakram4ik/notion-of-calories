@@ -6,6 +6,7 @@ import {StyleSheet, View} from 'react-native';
 
 import NavigationFooter from '../components/NavigationFooter';
 import useGetUser from '../hook/useGetUser';
+import {ContextUser} from '../hook/context';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,12 +15,14 @@ export default function Main() {
 
   return (
     <View style={styles.container}>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Products" component={Products} />
-      </Stack.Navigator>
+      <ContextUser.Provider value={[]}>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Products" component={Products} />
+        </Stack.Navigator>
 
-      <NavigationFooter />
+        <NavigationFooter />
+      </ContextUser.Provider>
     </View>
   );
 }
