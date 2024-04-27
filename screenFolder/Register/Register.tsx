@@ -1,15 +1,12 @@
 import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
 import {useLoginMutation} from '../../store/server/server.fetch';
-import {IRegister, IToken} from '../../type/user';
+import {IRegister} from '../../type/user';
 import {useForm} from 'react-hook-form';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import InputApp from '../../components/Imput';
 import {registerData} from './RegisterData';
-// import {FetchBaseQueryError} from '../type/fetch';
-// import {AsyncStorage} from '@types/react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {RegisterResponse} from '../../type/fetch';
 
 export default function Register({
   navigation,
@@ -28,8 +25,7 @@ export default function Register({
   const handlerRegister = async (value: IRegister) => {
     setisLoadingMessage('Load');
     const {data, error} = await registerUser(value).unwrap();
-    console.log(value);
-    // console.log(error);
+
     if (data) {
       await AsyncStorage.setItem('token', data.token);
       setisLoadingMessage('');
@@ -38,7 +34,6 @@ export default function Register({
     if (error) {
       setisLoadingMessage('');
       setErrorMessage(error.data.message);
-      console.log(errorMessage);
     }
   };
 

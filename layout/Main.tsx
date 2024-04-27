@@ -11,7 +11,6 @@ const Stack = createNativeStackNavigator();
 
 export default function Main() {
   const data = useGetUser();
-  console.log(data);
 
   return (
     <View style={styles.container}>

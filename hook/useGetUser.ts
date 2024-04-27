@@ -10,11 +10,10 @@ export default function () {
 
   useEffect(() => {
     const fetchToken = async () => {
-      const token = await AsyncStorage.getItem('userToken'); // Получение токена из AsyncStorage
+      const token = await AsyncStorage.getItem('userToken');
       if (token) {
-        // Если токен найден, отправляем запрос с токеном
-        const userData = {token}; // Предположим, что токен отправляется как часть данных пользователя
-        setUserData(userData); // Устанавливаем данные пользователя для выполнения запроса
+        const userData = {token};
+        setUserData(userData);
       }
     };
     fetchToken();
