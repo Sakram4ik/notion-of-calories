@@ -7,6 +7,9 @@ export interface ILogin {
   email: string;
   password: string;
 }
+export interface ICode {
+  code: string;
+}
 export interface IToken {
   token: string;
 }
