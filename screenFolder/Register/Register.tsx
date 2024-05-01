@@ -1,16 +1,13 @@
 import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
-import {
-  useLoginMutation,
-  useRegisterUserMutation,
-} from '../../store/server/server.fetch';
+import {useRegisterUserMutation} from '../../store/server/server.fetch';
 import {IRegister} from '../../type/user';
 import {useForm} from 'react-hook-form';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import InputApp from '../../components/Imput';
 import {registerData} from './RegisterData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {RegisterResponse} from '../../type/fetch';
+import {Response} from '../../type/fetch';
 
 export default function Register({
   navigation,
@@ -29,7 +26,7 @@ export default function Register({
   const handlerRegister = async (value: IRegister) => {
     console.log('ddddd');
     setisLoadingMessage('Load');
-    const register = (await registerUser(value)) as RegisterResponse;
+    const register = (await registerUser(value)) as Response;
 
     if (register.data) {
       console.log('dddddhhh');

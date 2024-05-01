@@ -12,7 +12,7 @@ export interface IReqCode {
   code: string;
   token: string;
 }
-export interface RegisterResponse {
+export interface Response {
   data?: any;
   error?: {data: IError};
 }

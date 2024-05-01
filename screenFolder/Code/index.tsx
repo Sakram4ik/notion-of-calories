@@ -7,7 +7,7 @@ import {ICode} from '../../type/user';
 import useSendCode from '../../hook/useSendCode';
 import {useCheckAndRegisterMutation} from '../../store/server/server.fetch';
 import useGetUserCodeToken from '../../hook/useGetUserCodeToken';
-import {IReqCode, RegisterResponse} from '../../type/fetch';
+import {IReqCode, Response} from '../../type/fetch';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 
@@ -36,13 +36,16 @@ export default function Code({
       token: sendData.token,
     };
     setisLoadingMessage('Load');
-    const code = (await checkAndRegister(send)) as RegisterResponse;
+    const code = (await checkAndRegister(send)) as Response;
+    console.log(code);
     if (code.data) {
+      console.log('aaaaa');
       await AsyncStorage.setItem('userToken', code.data.token);
       setisLoadingMessage('');
       navigation.navigate('Main', {screen: 'Home'});
     }
     if (code.error) {
+      console.log('afffffff');
       setisLoadingMessage('');
       setErrorMessage(code.error.data.message);
     }
