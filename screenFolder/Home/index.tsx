@@ -7,10 +7,14 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
   const handler = () => {
     navigation.navigate('Register');
   };
-  const [UserInfo, setUserInfo] = useContext(ContextUser);
+  const handlerLogin = () => {
+    navigation.navigate('Login');
+  };
+  const [UserInfo] = useContext(ContextUser);
   return (
     <View>
       <Button title="Go it " onPress={() => handler()} />
+      <Button title="Go it " onPress={() => handlerLogin()} />
       <Text>{UserInfo.email}</Text>
     </View>
   );

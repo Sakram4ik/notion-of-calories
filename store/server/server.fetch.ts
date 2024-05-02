@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {IRegister, IToken} from '../../type/user';
+import {ILogin, IRegister, IToken} from '../../type/user';
 import {IReqCode, Response} from '../../type/fetch';
 
 export const ServerFetch = createApi({
@@ -20,7 +20,7 @@ export const ServerFetch = createApi({
         body: body,
       }),
     }),
-    Login: build.mutation({
+    login: build.mutation<Response, ILogin>({
       query: body => ({
         url: 'auth/login',
         method: 'POST',
@@ -29,7 +29,7 @@ export const ServerFetch = createApi({
         },
         body: body,
       }),
-      invalidatesTags: ['User'],
+      // invalidatesTags: ['User'],
     }),
     sendEmail: build.mutation<Response, IToken>({
       query: (body: IToken) => ({
