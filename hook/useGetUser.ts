@@ -14,11 +14,10 @@ export default function () {
     const fetchToken = async () => {
       const token = await AsyncStorage.getItem('userToken');
       if (token) {
-        const user = {token};
-        console.log('dddd');
-        setUserData(user);
+        setUserData({token: token});
       }
     };
+    console.log('aaa');
     fetchToken();
   }, []);
 

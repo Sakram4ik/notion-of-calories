@@ -33,7 +33,7 @@ export default function Login({
     const login = (await LoginUser(value2)) as Response;
     console.log(value);
     if (login.data) {
-      console.log(login.data)
+      console.log(login.data);
       console.log('dddddhhh');
       await AsyncStorage.setItem('userToken', login.data.token);
       setisLoadingMessage('');
