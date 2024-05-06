@@ -7,6 +7,7 @@ import {StyleSheet, View} from 'react-native';
 import NavigationFooter from '../components/NavigationFooter';
 import useGetUser from '../hook/useGetUser';
 import {ContextUser} from '../hook/context';
+import Header from '../components/Header';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export default function Main() {
   return (
     <View style={styles.container}>
       <ContextUser.Provider value={[UserInfo, setUserInfo]}>
+        <Header />
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Products" component={Products} />
@@ -34,7 +36,7 @@ export default function Main() {
 
 const styles = StyleSheet.create({
   container: {
-    height: 100,
+    height: '100%',
     backgroundColor: 'skyblue',
   },
 });
