@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
 import {useRegisterUserMutation} from '../../store/server/server.fetch';
-import {IRegister} from '../../type/user';
+import {IRegister, IToken} from '../../type/user';
 import {useForm} from 'react-hook-form';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import InputApp from '../../components/Imput';
@@ -17,16 +17,17 @@ export default function Register({
   const {
     handleSubmit,
     control,
-
     formState: {},
   } = useForm<IRegister>();
+
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoadingMessage, setisLoadingMessage] = useState('');
   const [registerUser] = useRegisterUserMutation();
+
   const handlerRegister = async (value: IRegister) => {
     console.log('ddddd');
     setisLoadingMessage('Load');
-    const register = (await registerUser(value)) as Response;
+    const register = (await registerUser(value)) as Response<IToken>;
 
     if (register.data) {
       console.log('dddddhhh');

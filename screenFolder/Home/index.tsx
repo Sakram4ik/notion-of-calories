@@ -11,12 +11,21 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
     navigation.navigate('Login');
   };
   const [UserInfo] = useContext(ContextUser);
+
   return (
     <View>
-      <Button title="Go it " onPress={() => handler()} />
-      <Button title="Go it " onPress={() => handlerLogin()} />
-      <Text>{UserInfo.email}</Text>
+      {UserInfo ? (
+        <View>
+          <Text>{UserInfo.email}</Text>
+        </View>
+      ) : (
+        <View>
+          <Button title="Go to Register" onPress={() => handler()} />
+          <Button title="Go to Login" onPress={() => handlerLogin()} />
+        </View>
+      )}
     </View>
   );
 };
+
 export default Home;

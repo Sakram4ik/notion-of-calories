@@ -12,8 +12,8 @@ export interface IReqCode {
   code: string;
   token: string;
 }
-export interface Response {
-  data?: any;
+export interface Response<T> {
+  data?: T;
   error?: {data: IError};
 }
 export interface IError {

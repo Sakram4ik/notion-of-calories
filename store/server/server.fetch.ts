@@ -4,13 +4,13 @@ import {IReqCode, Response} from '../../type/fetch';
 
 export const ServerFetch = createApi({
   reducerPath: 'serverFetch',
-  // refetchOnFocus: true,
+  refetchOnFocus: true,
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://project-name-oqml.onrender.com',
   }),
   tagTypes: ['User'],
   endpoints: build => ({
-    registerUser: build.mutation<Response, IRegister>({
+    registerUser: build.mutation<Response<IToken>, IRegister>({
       query: body => ({
         url: 'auth/register',
         method: 'POST',
@@ -20,7 +20,7 @@ export const ServerFetch = createApi({
         body: body,
       }),
     }),
-    login: build.mutation<Response, ILogin>({
+    login: build.mutation<Response<IToken>, ILogin>({
       query: body => ({
         url: 'auth/login',
         method: 'POST',
@@ -31,7 +31,7 @@ export const ServerFetch = createApi({
       }),
       // invalidatesTags: ['User'],
     }),
-    sendEmail: build.mutation<Response, IToken>({
+    sendEmail: build.mutation<Response<any>, IToken>({
       query: (body: IToken) => ({
         url: 'auth/sendemail',
         method: 'POST',
@@ -42,7 +42,7 @@ export const ServerFetch = createApi({
       }),
       // providesTags: ['User'],
     }),
-    checkAndRegister: build.mutation<Response, IReqCode>({
+    checkAndRegister: build.mutation<Response<any>, IReqCode>({
       query: body => ({
         url: 'auth/checkandregister',
         method: 'POST',
@@ -53,7 +53,7 @@ export const ServerFetch = createApi({
       }),
       // invalidatesTags: ['User'],
     }),
-    getUser: build.mutation<Response, IToken>({
+    getUser: build.mutation<Response<any>, IToken>({
       query: body => ({
         url: 'user/get',
         method: 'POST',

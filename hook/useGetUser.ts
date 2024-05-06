@@ -24,7 +24,7 @@ export default function () {
   useEffect(() => {
     const getU = async () => {
       console.log(userData);
-      const user = (await getUser(userData)) as Response;
+      const user = (await getUser(userData)) as Response<any>;
       if (user.data) {
         console.log(user.data);
         setUserInfo(user.data);

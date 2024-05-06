@@ -36,7 +36,7 @@ export default function Code({
       token: sendData.token,
     };
     setisLoadingMessage('Load');
-    const code = (await checkAndRegister(send)) as Response;
+    const code = (await checkAndRegister(send)) as Response<any>;
     console.log(code);
     if (code.data) {
       console.log('aaaaa');

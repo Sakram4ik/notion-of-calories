@@ -9,7 +9,7 @@ export default function () {
   useEffect(() => {
     const getU = async () => {
       if (sendData.token.length > 0) {
-        const data = (await sendEmail(sendData)) as Response;
+        const data = (await sendEmail(sendData)) as Response<any>;
         console.log(data);
         return data.data;
       }

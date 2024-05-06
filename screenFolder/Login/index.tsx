@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
 import InputApp from '../../components/Imput';
 import {useForm} from 'react-hook-form';
-import {ILogin} from '../../type/user';
+import {ILogin, IToken} from '../../type/user';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {LoginData} from './dataLogin';
 import {Response} from '../../type/fetch';
@@ -30,7 +30,7 @@ export default function Login({
       password: value.password,
       name: '',
     };
-    const login = (await LoginUser(value2)) as Response;
+    const login = (await LoginUser(value2)) as Response<IToken>;
     console.log(value);
     if (login.data) {
       console.log(login.data);
