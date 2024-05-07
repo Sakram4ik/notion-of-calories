@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Button, Text, View} from 'react-native';
 import InputApp from '../../components/Imput';
 import {useForm} from 'react-hook-form';
@@ -8,6 +8,7 @@ import {LoginData} from './dataLogin';
 import {Response} from '../../type/fetch';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {useLoginMutation} from '../../store/server/server.fetch';
+import {ContextRefetch} from '../../hook/context';
 export default function Login({
   navigation,
 }: {
@@ -21,7 +22,7 @@ export default function Login({
   } = useForm<ILogin>();
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoadingMessage, setisLoadingMessage] = useState('');
-
+  const [refetch, setRefetch] = useContext(ContextRefetch);
   const [LoginUser] = useLoginMutation();
   const handlerLogin = async (value: ILogin) => {
     setisLoadingMessage('Load');
@@ -33,10 +34,9 @@ export default function Login({
     const login = (await LoginUser(value2)) as Response<IToken>;
     console.log(value);
     if (login.data) {
-      console.log(login.data);
-      console.log('dddddhhh');
       await AsyncStorage.setItem('userToken', login.data.token);
       setisLoadingMessage('');
+      setRefetch(refetch + 1);
       navigation.navigate('Main', {screen: 'Home'});
     }
     if (login.error) {

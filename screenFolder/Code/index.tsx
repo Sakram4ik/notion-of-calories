@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Button, Text, View} from 'react-native';
 import InputApp from '../../components/Imput';
 import {CodeData} from './CodeData';
@@ -10,6 +10,7 @@ import useGetUserCodeToken from '../../hook/useGetUserCodeToken';
 import {IReqCode, Response} from '../../type/fetch';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import {ContextRefetch} from '../../hook/context';
 
 export default function Code({
   navigation,
@@ -29,7 +30,7 @@ export default function Code({
 
   const sendData = useGetUserCodeToken();
   const [checkAndRegister] = useCheckAndRegisterMutation();
-
+  const [refetch, setRefetch] = useContext(ContextRefetch);
   const handlerCode = async (value: ICode) => {
     const send: IReqCode = {
       code: value.code,
@@ -37,15 +38,15 @@ export default function Code({
     };
     setisLoadingMessage('Load');
     const code = (await checkAndRegister(send)) as Response<any>;
-    console.log(code);
+
     if (code.data) {
       console.log('aaaaa');
       await AsyncStorage.setItem('userToken', code.data.token);
       setisLoadingMessage('');
+      setRefetch(refetch + 1);
       navigation.navigate('Main', {screen: 'Home'});
     }
     if (code.error) {
-      console.log('afffffff');
       setisLoadingMessage('');
       setErrorMessage(code.error.data.message);
     }
