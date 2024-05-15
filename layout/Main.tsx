@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Products from '../screenFolder/Products';
+import Products from '../screenFolder/Product';
 import Home from '../screenFolder/Home';
 import {StyleSheet, View} from 'react-native';
 

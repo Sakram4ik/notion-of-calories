@@ -1,7 +1,8 @@
-import {Button, Text, View} from 'react-native';
+import {Button, View, TouchableOpacity} from 'react-native';
 import React, {useContext} from 'react';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {ContextUser} from '../../hook/context';
+import {navProduct} from '../../hook/navigation';
 
 const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
   const handler = () => {
@@ -16,7 +17,14 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
     <View>
       {UserInfo ? (
         <View>
-          <Text>{UserInfo.email}</Text>
+          <View>
+            <Button
+              title="product"
+              onPress={() => {
+                navProduct(navigation);
+              }}
+            />
+          </View>
         </View>
       ) : (
         <View>

@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {ILogin, IRegister, IToken} from '../../type/user';
+import {ILogin, IProducts, IRegister, IToken} from '../../type/user';
 import {IReqCode, Response} from '../../type/fetch';
 
 export const ServerFetch = createApi({
@@ -64,6 +64,12 @@ export const ServerFetch = createApi({
       }),
       // providesTags: ['User'],
     }),
+    getProducts: build.query<Response<IProducts>, number>({
+      query: body => ({
+        url: `product/get?page=${body}`,
+      }),
+      // providesTags: ['User'],
+    }),
   }),
 });
 
@@ -73,4 +79,5 @@ export const {
   useGetUserMutation,
   useLoginMutation,
   useCheckAndRegisterMutation,
+  useGetProductsQuery,
 } = ServerFetch;

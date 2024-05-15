@@ -38,7 +38,7 @@ export default function Register({
     if (register.error) {
       console.log('dddddhhggh');
       setisLoadingMessage('');
-      setErrorMessage(register.error.data.message);
+      setErrorMessage(register.error.error);
     }
   };
 

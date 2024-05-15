@@ -14,9 +14,9 @@ export interface IReqCode {
 }
 export interface Response<T> {
   data?: T;
-  error?: {data: IError};
+  error?: IError;
 }
 export interface IError {
   status: string;
-  message: string;
+  error: string;
 }

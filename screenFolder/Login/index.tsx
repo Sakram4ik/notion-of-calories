@@ -39,10 +39,11 @@ export default function Login({
       setRefetch(refetch + 1);
       navigation.navigate('Main', {screen: 'Home'});
     }
+
     if (login.error) {
       console.log('dddddhhggh');
       setisLoadingMessage('');
-      setErrorMessage(login.error.data.message);
+      setErrorMessage(login.error.error);
     }
   };
   return (

@@ -48,7 +48,7 @@ export default function Code({
     }
     if (code.error) {
       setisLoadingMessage('');
-      setErrorMessage(code.error.data.message);
+      setErrorMessage(code.error.error);
     }
   };
 
