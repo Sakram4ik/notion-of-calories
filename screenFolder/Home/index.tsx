@@ -2,15 +2,9 @@ import {Button, View, TouchableOpacity} from 'react-native';
 import React, {useContext} from 'react';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {ContextUser} from '../../hook/context';
-import {navProduct} from '../../hook/navigation';
+import {navLogin, navProduct, navRegister} from '../../hook/navigation';
 
 const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
-  const handler = () => {
-    navigation.navigate('Register');
-  };
-  const handlerLogin = () => {
-    navigation.navigate('Login');
-  };
   const {UserInfo} = useContext(ContextUser);
 
   return (
@@ -28,8 +22,11 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
         </View>
       ) : (
         <View>
-          <Button title="Go to Register" onPress={() => handler()} />
-          <Button title="Go to Login" onPress={() => handlerLogin()} />
+          <Button
+            title="Go to Register"
+            onPress={() => navRegister(navigation)}
+          />
+          <Button title="Go to Login" onPress={() => navLogin(navigation)} />
         </View>
       )}
     </View>
