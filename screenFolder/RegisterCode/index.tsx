@@ -30,7 +30,7 @@ export default function Code({
 
   const sendData = useGetUserCodeToken();
   const [checkAndRegister] = useCheckAndRegisterMutation();
-  const [refetch, setRefetch] = useContext(ContextRefetch);
+  const {refetch, setRefetch} = useContext(ContextRefetch);
   const handlerCode = async (value: ICode) => {
     const send: IReqCode = {
       code: value.code,

@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {Provider} from 'react-redux';
 import {store} from './store';
-import Btw from './btw';
+import Btw from './navigation/btw';
 
 function App(): React.JSX.Element {
   return (

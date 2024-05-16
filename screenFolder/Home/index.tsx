@@ -11,7 +11,7 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
   const handlerLogin = () => {
     navigation.navigate('Login');
   };
-  const [UserInfo] = useContext(ContextUser);
+  const {UserInfo} = useContext(ContextUser);
 
   return (
     <View>
