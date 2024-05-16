@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
-import {useLoginMutation} from '../../store/server/server.fetch';
-import {IRegister} from '../../type/user';
+import {useRegisterUserMutation} from '../../store/server/server.fetch';
+import {IRegister, IToken} from '../../type/user';
 import {useForm} from 'react-hook-form';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import InputApp from '../../components/Imput';
 import {registerData} from './RegisterData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Response} from '../../type/fetch';
 
 export default function Register({
   navigation,
@@ -16,30 +17,34 @@ export default function Register({
   const {
     handleSubmit,
     control,
-
     formState: {},
   } = useForm<IRegister>();
+
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoadingMessage, setisLoadingMessage] = useState('');
-  const [registerUser] = useLoginMutation();
-  const handlerRegister = async (value: IRegister) => {
-    setisLoadingMessage('Load');
-    const {data, error} = await registerUser(value).unwrap();
+  const [registerUser] = useRegisterUserMutation();
 
-    if (data) {
-      await AsyncStorage.setItem('token', data.token);
+  const handlerRegister = async (value: IRegister) => {
+    console.log('ddddd');
+    setisLoadingMessage('Load');
+    const register = (await registerUser(value)) as Response<IToken>;
+
+    if (register.data) {
+      console.log('dddddhhh');
+      await AsyncStorage.setItem('tokenCode', register.data.token);
       setisLoadingMessage('');
-      navigation.navigate('Main', {screen: 'Home'});
+      navigation.navigate('Code');
     }
-    if (error) {
+    if (register.error) {
+      console.log('dddddhhggh');
       setisLoadingMessage('');
-      setErrorMessage(error.data.message);
+      setErrorMessage(register.error.error);
     }
   };
 
   return (
     <View>
-      <Text>gggg</Text>
+      <Text>gggfffffgvv</Text>
       {registerData.map((data, index) => (
         <InputApp
           control={control}

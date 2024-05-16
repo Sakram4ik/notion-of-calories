@@ -1,30 +1,28 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {IToken} from '../type/user';
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {useGetUserMutation} from '../store/server/server.fetch';
+import {Response} from '../type/fetch';
+import {ContextRefetch} from './context';
 
 export default function () {
-  const [userData, setUserData] = useState<IToken>({token: ''});
   const [getUser] = useGetUserMutation();
-
+  const [UserInfo, setUserInfo] = useState<any>('');
+  const [refetch] = useContext(ContextRefetch);
   useEffect(() => {
     const fetchToken = async () => {
       const token = await AsyncStorage.getItem('userToken');
       if (token) {
-        const userData = {token};
-        setUserData(userData);
+        const user = (await getUser({token: token})) as Response<any>;
+        if (user.data) {
+          console.log(user.data);
+          setUserInfo(user.data);
+        }
       }
     };
+    console.log('aaa');
     fetchToken();
-  }, []);
+  }, [getUser, refetch]);
 
-  useEffect(() => {
-    const getU = async () => {
-      const {data} = await getUser(userData).unwrap();
-      console.log(data);
-      return data;
-    };
-    getU();
-  }, [userData, getUser]);
+  return [UserInfo, setUserInfo];
 }

@@ -8,12 +8,15 @@ export interface UserError {
 export interface UserError {
   data: MyErrorType;
 }
-
-export interface RegisterResponse {
-  data?: any;
-  error?: {data: IError};
+export interface IReqCode {
+  code: string;
+  token: string;
+}
+export interface Response<T> {
+  data?: T;
+  error?: IError;
 }
 export interface IError {
   status: string;
-  message: string;
+  error: string;
 }
