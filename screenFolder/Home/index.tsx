@@ -13,20 +13,20 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
         <View>
           <View>
             <Button
-              title="product"
-              onPress={() => {
-                navProduct(navigation);
-              }}
+              title="Go to Register"
+              onPress={() => navRegister(navigation)}
             />
+            <Button title="Go to Login" onPress={() => navLogin(navigation)} />
           </View>
         </View>
       ) : (
         <View>
           <Button
-            title="Go to Register"
-            onPress={() => navRegister(navigation)}
+            title="product"
+            onPress={() => {
+              navProduct(navigation);
+            }}
           />
-          <Button title="Go to Login" onPress={() => navLogin(navigation)} />
         </View>
       )}
     </View>

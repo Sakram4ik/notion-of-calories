@@ -13,7 +13,7 @@ export default function Btw() {
 
   const [refetch, setRefetch] = useState(1);
   return (
-    <ContextRefetch.Provider value={{refetch, setRefetch}}>
+    <ContextRefetch.Provider value={[refetch, setRefetch]}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Register" component={Register} />

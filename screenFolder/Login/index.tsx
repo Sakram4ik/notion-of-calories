@@ -22,7 +22,7 @@ export default function Login({
   } = useForm<ILogin>();
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoadingMessage, setisLoadingMessage] = useState('');
-  const {refetch, setRefetch} = useContext(ContextRefetch);
+  const [refetch, setRefetch] = useContext(ContextRefetch);
   const [LoginUser] = useLoginMutation();
   const handlerLogin = async (value: ILogin) => {
     setisLoadingMessage('Load');

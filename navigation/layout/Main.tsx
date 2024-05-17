@@ -22,7 +22,7 @@ export default function Main() {
 
   return (
     <View style={styles.container}>
-      <ContextUser.Provider value={{UserInfo, setUserInfo}}>
+      <ContextUser.Provider value={[UserInfo, setUserInfo]}>
         <Header />
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Home" component={Home} />
