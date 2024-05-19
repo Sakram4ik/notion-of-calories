@@ -1,30 +1,36 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {
+  Image,
+  TouchableOpacity,
+  Text,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import {IProducts} from '../../type/user';
-import {useGetProductsQuery} from '../../store/server/server.fetch';
-import { Response } from '../../type/fetch';
 
-const ProductsList = () => {
-  const list = useGetProductsQuery(1) as Response<IProducts>;
-  console.log(list.data);
+interface ProductsListProps {
+  list: IProducts[] | undefined;
+}
+const ProductsList: React.FC<ProductsListProps> = ({list}) => {
   return (
-    <View>
-      {list.data ? (
-        <View>
-          {list.data.map(element => (
-            <View key={element.id}>
+    <SafeAreaView style={{width: 400, height: 400}}>
+      {list ? (
+        <ScrollView>
+          {list.map(element => (
+            <TouchableOpacity key={element.id}>
               <Image
-                source={{
-                  uri: element.img,
-                }}
+                source={{uri: element.img}}
+                style={{width: 40, height: 40}}
               />
-            </View>
+              <Text>{element.name}</Text>
+              {/* |<Text>{element.id}</Text> */}
+            </TouchableOpacity>
           ))}
-        </View>
+        </ScrollView>
       ) : (
         <></>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 export default ProductsList;
