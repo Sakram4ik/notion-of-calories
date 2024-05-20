@@ -28,6 +28,3 @@ export interface IProducts {
   category: string;
   vitamins: string[];
 }
-// export type IProducts = {
-//   list: product[];
-// };

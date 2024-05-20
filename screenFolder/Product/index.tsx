@@ -9,7 +9,7 @@ import TogglePage from '../../components/TogglePage';
 const Products = () => {
   const [page, setPage] = useState(1);
   const {data} = useGetProductsQuery(page) as Response<IProducts[]>;
-  // console.log(ProductList.data);
+
   return (
     <View>
       <ProductsList list={data} />

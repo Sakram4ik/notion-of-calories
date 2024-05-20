@@ -23,7 +23,6 @@ const ProductsList: React.FC<ProductsListProps> = ({list}) => {
                 style={{width: 40, height: 40}}
               />
               <Text>{element.name}</Text>
-              {/* |<Text>{element.id}</Text> */}
             </TouchableOpacity>
           ))}
         </ScrollView>
