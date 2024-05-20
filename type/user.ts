@@ -19,14 +19,12 @@ export interface RouterProps {
   navigation: NavigationProp<any, any>;
 }
 
-export type product = {
+export interface IProducts {
+  id: string;
   name: string;
   calories: string;
   img: string;
   description: string;
   category: string;
   vitamins: string[];
-};
-export interface IProducts {
-  data: product[];
 }

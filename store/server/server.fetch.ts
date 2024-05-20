@@ -64,7 +64,7 @@ export const ServerFetch = createApi({
       }),
       // providesTags: ['User'],
     }),
-    getProducts: build.query<Response<IProducts>, number>({
+    getProducts: build.query<Response<IProducts[]>, number>({
       query: body => ({
         url: `product/get?page=${body}`,
       }),
