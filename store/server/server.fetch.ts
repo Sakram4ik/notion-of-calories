@@ -70,10 +70,29 @@ export const ServerFetch = createApi({
       }),
       // providesTags: ['User'],
     }),
+    getProduct: build.query<Response<IProducts>, string>({
+      query: body => ({
+        url: `product/getProduct?id=${body}`,
+      }),
+      // providesTags: ['User'],
+    }),
+    addProduct: build.mutation<Response<string>, any>({
+      query: body => ({
+        url: 'product/addproduct',
+        method: 'POST',
+        headers: {
+          'content-type': ' application/json',
+        },
+        body: body,
+      }),
+      // providesTags: ['User'],
+    }),
   }),
 });
 
 export const {
+  useAddProductMutation,
+  useGetProductQuery,
   useSendEmailMutation,
   useRegisterUserMutation,
   useGetUserMutation,
