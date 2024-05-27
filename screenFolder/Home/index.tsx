@@ -3,13 +3,19 @@ import React, {useContext} from 'react';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {ContextUser} from '../../hook/context';
 import {navLogin, navProduct, navRegister} from '../../hook/navigation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
-  const {UserInfo} = useContext(ContextUser);
-
+  const [UserInfo, setUserInfo] = useContext(ContextUser);
+  const handlerGetOut = async () => {
+    console.log('aaaaaaaaaaa');
+    console.log(UserInfo);
+    await AsyncStorage.removeItem('token');
+    setUserInfo('');
+  };
   return (
     <View>
-      {UserInfo ? (
+      {!UserInfo ? (
         <View>
           <View>
             <Button
@@ -21,6 +27,7 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
         </View>
       ) : (
         <View>
+          <Button title="Go out" onPress={() => handlerGetOut()} />
           <Button
             title="product"
             onPress={() => {

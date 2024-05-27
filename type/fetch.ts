@@ -20,3 +20,8 @@ export interface IError {
   status: string;
   error: string;
 }
+export type RootStackParamList = {
+  Home: undefined;
+  Products: undefined;
+  Product: {id: string};
+};
