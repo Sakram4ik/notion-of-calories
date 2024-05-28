@@ -7,7 +7,7 @@ import {StyleSheet, View} from 'react-native';
 import NavigationFooter from '../../components/NavigationFooter';
 import useGetUser from '../../hook/useGetUser';
 import {ContextUser} from '../../hook/context';
-import Header from '../../components/Header';
+
 import Product from '../../screenFolder/Product';
 import Products from '../../screenFolder/Products';
 

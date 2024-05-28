@@ -1,6 +1,7 @@
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Response, RootStackParamList} from '../../type/fetch';
+import React from 'react';
 import {
   useAddProductMutation,
   useGetProductQuery,
@@ -31,14 +32,14 @@ export default function Product() {
     }
     if (add.error) {
       console.log('dddddhhggh');
-      console.log(add.error)
+      console.log(add.error);
     }
   };
   const {id} = route.params;
   const {data} = useGetProductQuery(id) as Response<IProducts>;
   console.log(id);
   return (
-    <View>
+    <View style={styles.container}>
       <Text>{data?.name}</Text>
       {ProductData.map((element: string) => (
         <TouchableOpacity
@@ -58,6 +59,7 @@ export default function Product() {
   );
 }
 const styles = StyleSheet.create({
+  container: {},
   button: {
     width: 90,
     height: 90,

@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {
-  Button,
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {useRegisterUserMutation} from '../../store/server/server.fetch';
 import {IRegister, IToken} from '../../type/user';
 import {useForm} from 'react-hook-form';
@@ -16,7 +9,7 @@ import {registerData} from './RegisterData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Response} from '../../type/fetch';
 import colors from '../../components/colors/colors';
-import LoginButton from '../../components/MainButton/aproveButton';
+// import LoginButton from '../../components/MainButton/aproveButton';
 import BackButton from '../../components/backButton/backButton';
 
 export default function Register({

@@ -1,11 +1,4 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Button,
-} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React, {useContext} from 'react';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {ContextUser} from '../../hook/context';
