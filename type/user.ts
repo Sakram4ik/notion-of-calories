@@ -28,3 +28,4 @@ export interface IProducts {
   category: string;
   vitamins: string[];
 }
+
