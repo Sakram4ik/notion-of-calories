@@ -1,10 +1,19 @@
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Button, View} from 'react-native';
+import {navLogin} from '../../hook/navigation';
+import {RootStackParamList} from '../../type/fetch';
 
 export default function NavigationFooter() {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <View>
-      <Text>Nav</Text>
+      <Button
+        title="="
+        onPress={() => {
+          navLogin(navigation);
+        }}
+      />
     </View>
   );
 }
