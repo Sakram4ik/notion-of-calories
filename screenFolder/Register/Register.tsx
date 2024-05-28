@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {Button, Text, View,StyleSheet, TouchableOpacity,Image} from 'react-native';
+import {
+  Button,
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import {useRegisterUserMutation} from '../../store/server/server.fetch';
 import {IRegister, IToken} from '../../type/user';
 import {useForm} from 'react-hook-form';
@@ -8,7 +15,7 @@ import InputApp from '../../components/Imput';
 import {registerData} from './RegisterData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Response} from '../../type/fetch';
-import colors from '../../components/colors/colors'
+import colors from '../../components/colors/colors';
 import LoginButton from '../../components/MainButton/aproveButton';
 import BackButton from '../../components/backButton/backButton';
 
@@ -45,45 +52,16 @@ export default function Register({
     }
   };
 
-  const styles = StyleSheet.create({
-    block:{
-      backgroundColor:colors.primary,
-      flex: 1,
-      justifyContent:'center'
-    },
-    button:{
-      color:colors.inputText,
-      backgroundColor:colors.inputs,
-      marginHorizontal:'13%',
-      borderRadius:8,
-      paddingVertical:12
-    },
-    buttonText:{
-      textAlign:"center",
-      color:colors.inputText,
-      fontFamily:"RussoOne-Regular"
-    },
-    mainText:{
-      color:colors.primaryText,
-      fontSize:28,
-      fontWeight:"400",
-      lineHeight:30,
-      fontFamily:"RussoOne-Regular",
-      marginHorizontal:'13%',
-      textAlign:'center',
-      marginBottom:50
-    },
-    image:{
-      position:"absolute",
-      top:20,
-      right:20
-    }
-  })
   return (
-    <View style ={styles.block}>
-      <BackButton/>
-      <Image style ={styles.image} source={require('../../components/Image/CapybaraLoaderIcon.png')}></Image> 
-      <Text style ={styles.mainText}>Ласкаво просимо! Розпочнімо реєстрацію!</Text>
+    <View style={styles.block}>
+      <BackButton />
+      <Image
+        style={styles.image}
+        source={require('../../components/Image/CapybaraLoaderIcon.png')}
+      />
+      <Text style={styles.mainText}>
+        Ласкаво просимо! Розпочнімо реєстрацію!
+      </Text>
       {registerData.map((data, index) => (
         <InputApp
           control={control}
@@ -96,11 +74,45 @@ export default function Register({
       <Text>{errorMessage}</Text>
       {/* <Button title="Go it " onPress={handleSubmit(handlerRegister)} />
       <LoginButton onPress={() =>handleSubmit(handlerRegister)}/> */}
-      <View style ={styles.button}>
-      <TouchableOpacity onPress={handleSubmit(handlerRegister)}>
-        <Text style ={styles.buttonText}>GO IT</Text>
-      </TouchableOpacity>
-    </View>
+      <View style={styles.button}>
+        <TouchableOpacity onPress={handleSubmit(handlerRegister)}>
+          <Text style={styles.buttonText}>GO IT</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
+const styles = StyleSheet.create({
+  block: {
+    backgroundColor: colors.primary,
+    flex: 1,
+    justifyContent: 'center',
+  },
+  button: {
+    color: colors.inputText,
+    backgroundColor: colors.inputs,
+    marginHorizontal: '13%',
+    borderRadius: 8,
+    paddingVertical: 12,
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: colors.inputText,
+    fontFamily: 'RussoOne-Regular',
+  },
+  mainText: {
+    color: colors.primaryText,
+    fontSize: 28,
+    fontWeight: '400',
+    lineHeight: 30,
+    fontFamily: 'RussoOne-Regular',
+    marginHorizontal: '13%',
+    textAlign: 'center',
+    marginBottom: 50,
+  },
+  image: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+  },
+});
