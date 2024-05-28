@@ -10,6 +10,7 @@ import {ContextUser} from '../../hook/context';
 
 import Product from '../../screenFolder/Product';
 import Products from '../../screenFolder/Products';
+import Profile from '../../screenFolder/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ export default function Main() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Products" component={Products} />
           <Stack.Screen name="Product" component={Product} />
+          <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
         <NavigationFooter />
       </ContextUser.Provider>

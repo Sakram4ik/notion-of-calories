@@ -1,7 +1,7 @@
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Button, View} from 'react-native';
-import {navLogin} from '../../hook/navigation';
+import {navProfile} from '../../hook/navigation';
 import {RootStackParamList} from '../../type/fetch';
 
 export default function NavigationFooter() {
@@ -11,7 +11,7 @@ export default function NavigationFooter() {
       <Button
         title="="
         onPress={() => {
-          navLogin(navigation);
+          navProfile(navigation);
         }}
       />
     </View>

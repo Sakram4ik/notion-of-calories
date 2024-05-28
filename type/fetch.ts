@@ -24,4 +24,5 @@ export type RootStackParamList = {
   Home: undefined;
   Products: undefined;
   Product: {id: string};
+  Profile: {token: string};
 };
