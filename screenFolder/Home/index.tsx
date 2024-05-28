@@ -1,25 +1,37 @@
+
 import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React, {useContext} from 'react';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {ContextUser} from '../../hook/context';
 import colors from '../../components/colors/colors';
-const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
-  const handler = () => {
-    navigation.navigate('Register');
-  };
-  const handlerLogin = () => {
-    navigation.navigate('Login');
-  };
-  const [UserInfo] = useContext(ContextUser);
 
+import {navLogin, navProduct, navRegister} from '../../hook/navigation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
+  const [UserInfo, setUserInfo] = useContext(ContextUser);
+  const handlerGetOut = async () => {
+    console.log('aaaaaaaaaaa');
+    console.log(UserInfo);
+    await AsyncStorage.removeItem('token');
+    setUserInfo('');
+  };
   return (
     <View style={styles.block}>
       {UserInfo ? (
         <View>
-          <Text>{UserInfo.email}</Text>
+          <View>
+            <Button
+              title="Go to Register"
+              onPress={() => navRegister(navigation)}
+            />
+            <Button title="Go to Login" onPress={() => navLogin(navigation)} />
+          </View>
         </View>
       ) : (
         <View>
+
           <Image
             style={styles.mainImg}
             source={require('../../components/Image/mainCapybara.png')}
@@ -35,6 +47,7 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
               <Text style={styles.buttonText}>Go to login</Text>
             </TouchableOpacity>
           </View>
+
         </View>
       )}
     </View>

@@ -18,3 +18,13 @@ import {NavigationProp} from '@react-navigation/native';
 export interface RouterProps {
   navigation: NavigationProp<any, any>;
 }
+
+export interface IProducts {
+  id: string;
+  name: string;
+  calories: string;
+  img: string;
+  description: string;
+  category: string;
+  vitamins: string[];
+}

@@ -1,13 +1,15 @@
 import React, {useState,useEffect } from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Register from './screenFolder/Register/Register';
+import Register from '../screenFolder/Register/Register';
 import Main from './layout/Main';
+
 import Code from './screenFolder/Code';
 import Login from './screenFolder/Login/index';
 import {ContextRefetch} from './hook/context';
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
 import color from './components/colors/colors'
 import {StatusBar} from 'react-native'
+
 const Stack = createNativeStackNavigator();
 
 export default function Btw() {
