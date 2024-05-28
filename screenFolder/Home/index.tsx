@@ -1,5 +1,11 @@
-
-import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Button,
+} from 'react-native';
 import React, {useContext} from 'react';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {ContextUser} from '../../hook/context';
@@ -7,7 +13,6 @@ import colors from '../../components/colors/colors';
 
 import {navLogin, navProduct, navRegister} from '../../hook/navigation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
   const [UserInfo, setUserInfo] = useContext(ContextUser);
@@ -21,33 +26,34 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
     <View style={styles.block}>
       {UserInfo ? (
         <View>
-          <View>
-            <Button
-              title="Go to Register"
-              onPress={() => navRegister(navigation)}
-            />
-            <Button title="Go to Login" onPress={() => navLogin(navigation)} />
+          <View style={styles.button}>
+            <TouchableOpacity onPress={() => handlerGetOut()}>
+              <Text style={styles.buttonText}>go out</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.button}>
+            <TouchableOpacity onPress={() => navProduct(navigation)}>
+              <Text style={styles.buttonText}>Product</Text>
+            </TouchableOpacity>
           </View>
         </View>
       ) : (
         <View>
-
           <Image
             style={styles.mainImg}
             source={require('../../components/Image/mainCapybara.png')}
           />
           <Text style={styles.mainText}>Вітаємо!</Text>
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => handler()}>
+            <TouchableOpacity onPress={() => navRegister(navigation)}>
               <Text style={styles.buttonText}>Go to Register</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => handlerLogin()}>
+            <TouchableOpacity onPress={() => navLogin(navigation)}>
               <Text style={styles.buttonText}>Go to login</Text>
             </TouchableOpacity>
           </View>
-
         </View>
       )}
     </View>
