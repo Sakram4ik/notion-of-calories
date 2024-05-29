@@ -4,10 +4,8 @@ import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {ContextUser} from '../../hook/context';
 import colors from '../../components/colors/colors';
 
-import { format } from 'date-fns';
-import { uk } from 'date-fns/locale';
-
-
+import {format} from 'date-fns';
+import {uk} from 'date-fns/locale';
 
 import {navLogin, navProduct, navRegister} from '../../hook/navigation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -27,30 +25,32 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
 
   const userName = UserInfo.name;
   const currentDate = new Date(); // Отримуємо поточну дату
-  const formattedDate = format(currentDate, 'd MMMM, EEEE', { locale: uk});
+  const formattedDate = format(currentDate, 'd MMMM, EEEE', {locale: uk});
 
   return (
     <View style={styles.Mainblock}>
       {UserInfo ? (
         <>
-          <View style = {styles.header}>
-            <View style ={styles.blockHeader}>
-              <Text style = {styles.mainText}>Привіт, {userName}!</Text>
-              <Text style = {styles.dateText}>{formattedDate}</Text>
+          <View style={styles.header}>
+            <View style={styles.blockHeader}>
+              <Text style={styles.mainText}>Привіт, {userName}!</Text>
+              <Text style={styles.dateText}>{formattedDate}</Text>
             </View>
-            <TouchableOpacity >
-              <Image  source={require('../../components/Image/ProfileIcon.png')}></Image>
+            <TouchableOpacity>
+              <Image
+                source={require('../../components/Image/ProfileIcon.png')}
+              />
             </TouchableOpacity>
           </View>
-          <View style = {styles.blockRow}>
-              <ActionTile_Walking/>
-              <ActionTile_Water/>
+          <View style={styles.blockRow}>
+            <ActionTile_Walking />
+            <ActionTile_Water />
           </View>
-          <View style = {styles.blockRow}>
-              <ActionTile_Sport/>
-              <ActionTile_Calories navigation={navigation}/>
+          <View style={styles.blockRow}>
+            <ActionTile_Sport />
+            <ActionTile_Calories navigation={navigation} />
           </View>
-          <View style ={styles.block}>
+          <View style={styles.block}>
             {/* <View style={styles.button}>
               <TouchableOpacity onPress={() => handlerGetOut()}>
                 <Text style={styles.buttonText}>go out</Text>
@@ -81,27 +81,27 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
   );
 };
 const styles = StyleSheet.create({
-  header:{
-    flexDirection:"row",
-    marginHorizontal:20,
-    justifyContent:"space-between",
-    marginVertical:25,
+  header: {
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    justifyContent: 'space-between',
+    marginVertical: 25,
   },
-  blockHeader:{
-    flexDirection:"column",
+  blockHeader: {
+    flexDirection: 'column',
   },
   Mainblock: {
     backgroundColor: colors.primary,
     flex: 1,
   },
-  block:{
+  block: {
     flex: 1,
     justifyContent: 'center',
   },
-  blockRow:{
-    flexDirection:"row",
-    justifyContent:"space-around",
-    marginVertical:20,
+  blockRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginVertical: 20,
   },
   button: {
     color: colors.inputText,
@@ -125,14 +125,13 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginBottom: 2,
   },
-  dateText:{
-    fontSize:16,
+  dateText: {
+    fontSize: 16,
     color: colors.primaryText,
     fontWeight: '500',
     lineHeight: 20,
     fontFamily: 'Ubuntu-Medium',
     textAlign: 'left',
-
   },
   mainImg: {
     alignSelf: 'center',
