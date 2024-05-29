@@ -28,3 +28,8 @@ export interface IProducts {
   category: string;
   vitamins: string[];
 }
+export interface IGetProductUser {
+  lunch: IProducts[] | null;
+  dinner: IProducts[] | null;
+  breakfast: IProducts[] | null;
+}
