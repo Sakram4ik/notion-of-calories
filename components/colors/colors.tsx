@@ -5,4 +5,6 @@ export default {
   primaryText: '#FFD1E3',
   inputText: '#FFD1E3CC',
   dark: '',
+  back:'#9400FF',
+  footer:'#9336B4'
 };
