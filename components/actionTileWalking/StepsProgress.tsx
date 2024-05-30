@@ -1,4 +1,6 @@
-import 'react-native-reanimated';
+/* import  {ReanimatedModule}  from 'react-native-reanimated';
+
+ReanimatedModule.installCoreFunctions(); */
 import CircularProgress from 'react-native-circular-progress-indicator';
 import React from 'react';
 import { View, Text } from 'react-native';
@@ -13,7 +15,13 @@ const StepsProgress: React.FC<StepsProgressProps> = ({ currentSteps, maxSteps })
 
   return (
     <View>
-      <CircularProgress value={fillPercentage} />
+      <CircularProgress
+       value={fillPercentage}
+       maxValue={maxSteps}
+       radius={120}
+       progressValueColor={'#ecf0f1'} 
+       activeStrokeColor={'#f39c12'}
+       />
       <Text>{currentSteps} Кроків</Text>
     </View>
   );

@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     lineHeight: 30,
     fontFamily: 'RussoOne-Regular',
-    textAlign: 'left',
+    textAlign: 'center',
     marginBottom: 2,
   },
   dateText:{

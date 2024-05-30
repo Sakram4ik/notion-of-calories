@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import StepsProgress from './StepsProgress';
 import colors from '../colors/colors';
 import FootsIcon from '../Image/icons/footsIcon'
-import WaterWaves from '../Image/icons/WaterWaves'
 const ActionTile_Walking = () => {
 
     const currentSteps = 3300; // Поточна кількість кроків

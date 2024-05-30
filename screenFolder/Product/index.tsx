@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
   View,
   Image,
+  ScrollView,
 } from 'react-native';
-import {IUserInfo, Response, RootStackParamList} from '../../type/fetch';
+import { Response, RootStackParamList} from '../../type/fetch';
 import {
   useAddProductMutation,
   useGetProductQuery,
@@ -18,6 +19,8 @@ import {useContext, useState} from 'react';
 import ProductData from './ProductData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ContextRefetch, ContextUser} from '../../hook/context';
+
+import colors from '../../components/colors/colors'
 
 type ProductRouteProp = RouteProp<RootStackParamList, 'Product'>;
 export default function Product() {
@@ -84,35 +87,75 @@ export default function Product() {
   };
 
   return (
-    <View>
-      <Text>{data?.name}</Text>
+    <ScrollView style = {{backgroundColor:colors.primary}}>
+      <Text style = {styles.headerText}>{data?.name}</Text>
       {data ? (
         <Image source={{uri: data?.img}} style={{width: 400, height: 400}} />
-      ) : (
+      )
+       : (
         <></>
       )}
-
+      <View style ={{flexDirection:"row"}}>
       {ProductData.map((element: string) => (
-        <TouchableOpacity
-          onPress={() => handlerTime(element)}
-          key={element}
-          style={styles.button}>
-          <Text>{element}</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => handlerTime(element)}
+            key={element}
+            style={styles.button}>
+            <Text style = {styles.buttonText}>{element}</Text>
+          </TouchableOpacity>
       ))}
-      <Button
-        title="add"
-        onPress={() => {
-          handlerAddProduct();
-        }}
-      />
-    </View>
+      </View>
+      <Text style = {styles.description}>{data?.description}</Text>
+      <TouchableOpacity onPress={() => {
+          handlerAddProduct();}}>
+            <Text style = {styles.buttonAdd}>Add</Text>
+        </TouchableOpacity>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
   button: {
-    width: 90,
-    height: 90,
-    backgroundColor: 'red',
+    backgroundColor: colors.inputs,
+    marginHorizontal: 5,
+    borderRadius: 8,
+    paddingVertical: 12,
+    marginVertical: 25,
+    width:"31%",
+    alignItems:"center",
+  },
+  buttonText:{
+    fontSize:18,
+    color: colors.inputText,
+  },
+  headerText:{
+    color: colors.inputText,
+    fontSize:35,
+    marginHorizontal:10,
+    alignSelf:"center",
+    textAlign:"center",
+    marginVertical:15,
+    fontFamily: 'RussoOne-Regular',
+    fontWeight:'700',
+  },
+  description:{
+    color:colors.inputText,
+    fontFamily: 'Ubuntu-Medium',
+    fontWeight:'600',
+    fontSize:18,
+    marginHorizontal:10,
+    marginVertical:15
+
+  },
+  buttonAdd:{
+    color: colors.inputText,
+    backgroundColor:'#5D3587',
+    paddingVertical:20,
+    textAlign:"center",
+    fontFamily: 'RussoOne-Regular',
+    fontWeight:'700',
+    fontSize:20,
+    borderRadius:10,
+    width:"50%",
+    alignSelf:"center"
   },
 });
