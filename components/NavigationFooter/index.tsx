@@ -1,7 +1,7 @@
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Button, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {navProfile} from '../../hook/navigation';
+import {navProfile, navHome} from '../../hook/navigation';
 import {RootStackParamList} from '../../type/fetch';
 import HomePageIcon from '../Image/icons/HomePageIcon';
 import CapyBaraPageIcon from '../Image/icons/CaoyBaraPageIcon';
@@ -18,10 +18,11 @@ export default function NavigationFooter() {
           navProfile(navigation);
         }}
       /> */}
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() =>{navHome(navigation)}}>
         <HomePageIcon/>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() =>{navProfile(navigation)}}>
+
         <CapyBaraPageIcon/>
       </TouchableOpacity>
       <TouchableOpacity>

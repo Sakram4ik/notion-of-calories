@@ -9,7 +9,7 @@ const styles=StyleSheet.create({
  BackArrow:{
     position:"absolute",
     top: 20,
-    left:20
+    left:20,
  }
 })
 

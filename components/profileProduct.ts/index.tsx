@@ -1,7 +1,8 @@
 import React from 'react';
 import {IProducts} from '../../type/user';
-import {Text, TouchableOpacity, View, Image} from 'react-native';
+import {Text, TouchableOpacity, View, Image, StyleSheet} from 'react-native';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import colors from '../colors/colors'
 
 interface ProfileProductProps {
   product: IProducts[] | null | undefined;
@@ -15,18 +16,18 @@ const ProfileProduct: React.FC<ProfileProductProps> = ({
 //     navigation.navigate('Product', {id});
 //   };
   return (
-    <View>
+    <View >
       {product ? (
-        <View>
+        <View style = {styles.block}>
           {product.map(element => (
-            <TouchableOpacity
-              onPress={() => handlerProduct(element.id)}
+            <TouchableOpacity style = {styles.tile}
+             // onPress={() => handlerProduct(element.id)}
               key={element.id}>
               <Image
                 source={{uri: element.img}}
-                style={{width: 40, height: 40}}
+                style = {styles.image}
               />
-              <Text>{element.name}</Text>
+              <Text style = {styles.text}>{element.name}</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -36,4 +37,30 @@ const ProfileProduct: React.FC<ProfileProductProps> = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  block:{
+   marginLeft:20,
+  },
+  image:{
+    alignSelf:"center",
+    width:150,
+    height:150,
+    margin:5,
+    borderRadius:10
+  },
+  text:{
+  color:colors.inputText,
+  flexWrap:"wrap",
+  flex:1,
+  textAlign:"center",
+  fontSize:16,
+  marginRight:10
+  },
+  tile:{
+    flexDirection:'row',  
+     alignItems:"center",
+     marginBottom:10
+    },
+})
 export default ProfileProduct;
