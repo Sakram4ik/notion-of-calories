@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
       borderRadius:12,
       marginHorizontal:'10%',
       justifyContent:"space-around",
-      marginBottom:30
+      marginBottom:30,
+      alignItems:"center"
   },
   activeIcon: {
     borderWidth: 1,

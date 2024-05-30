@@ -13,6 +13,7 @@ import ActionTile_Walking from '../../components/actionTileWalking/actionTile_Wa
 import ActionTile_Water from '../../components/actionTileWater/ActionTileWater';
 import ActionTile_Sport from '../../components/actionTileSport/ActionTileSport';
 import ActionTile_Calories from '../../components/actionTileCalories/AcrionTileCalories';
+import TrainingCalendarIcon from '../../components/Image/icons/TrainingCalendarIcon';
 
 const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
   const [UserInfo, setUserInfo] = useContext(ContextUser);
@@ -50,13 +51,10 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
             <ActionTile_Sport />
             <ActionTile_Calories navigation={navigation} />
           </View>
-          <View style={styles.block}>
-            {/* <View style={styles.button}>
-              <TouchableOpacity onPress={() => handlerGetOut()}>
-                <Text style={styles.buttonText}>go out</Text>
-              </TouchableOpacity>
-            </View> */}
-          </View>
+          <TouchableOpacity style={styles.calendarBlock}>
+            <Text style={styles.calendarText}>Календар тренувань</Text>
+            <TrainingCalendarIcon/>
+          </TouchableOpacity>
         </>
       ) : (
         <View>
@@ -137,5 +135,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 60,
   },
+  calendarBlock:{
+    flexDirection:"row",
+    backgroundColor:"#A367B1",
+    borderRadius:10,
+    padding:20,
+    marginHorizontal:20,
+    justifyContent:"space-between",
+    marginTop:50
+  },
+  calendarText:{
+    color:'#FFFFFF',
+    fontSize:16,
+    fontWeight:'500',
+    fontFamily: 'RussoOne-Regular',
+  }
 });
 export default Home;
