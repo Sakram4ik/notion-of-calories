@@ -37,7 +37,7 @@ export default function Main() {
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Pedometer" component={Pedometer} />
         </Stack.Navigator>
-        <NavigationFooter />
+        {UserInfo ? <></> : <NavigationFooter />}
       </ContextUser.Provider>
     </View>
   );

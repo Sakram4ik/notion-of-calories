@@ -53,7 +53,7 @@ const Home = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
           </View>
           <TouchableOpacity style={styles.calendarBlock}>
             <Text style={styles.calendarText}>Календар тренувань</Text>
-            <TrainingCalendarIcon/>
+            <TrainingCalendarIcon />
           </TouchableOpacity>
         </>
       ) : (
