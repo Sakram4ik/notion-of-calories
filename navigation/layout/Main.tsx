@@ -13,6 +13,7 @@ import Products from '../../screenFolder/Products';
 import Profile from '../../screenFolder/Profile';
 
 import colors from '../../components/colors/colors';
+import Pedometer from '../../screenFolder/Pedometr';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,7 @@ export default function Main() {
           <Stack.Screen name="Products" component={Products} />
           <Stack.Screen name="Product" component={Product} />
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Pedometer" component={Pedometer} />
         </Stack.Navigator>
         <NavigationFooter />
       </ContextUser.Provider>
