@@ -106,7 +106,7 @@ export default function Product() {
       ))}
       </View>
       <Text style = {styles.description}>{data?.description}</Text>
-      <TouchableOpacity onPress={() => {
+      <TouchableOpacity style = {{marginBottom:20}} onPress={() => {
           handlerAddProduct();}}>
             <Text style = {styles.buttonAdd}>Add</Text>
         </TouchableOpacity>
