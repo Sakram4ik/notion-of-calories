@@ -3,15 +3,15 @@ import React, {useState, useEffect,useContext} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import colors from '../colors/colors';
 
-import {NavigationProp, ParamListBase, useNavigation,RouteProp,useRoute } from '@react-navigation/native';
+import {NavigationProp, ParamListBase,/*  useNavigation,RouteProp,useRoute */ } from '@react-navigation/native';
 import { navProduct,} from '../../hook/navigation';
 
-import { RootStackParamList} from '../../type/fetch';
+/* import { RootStackParamList} from '../../type/fetch'; */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ContextUser} from '../../hook/context';
 
 
-type ProductRouteProp = RouteProp<RootStackParamList, 'Product'>;
+/* type ProductRouteProp = RouteProp<RootStackParamList, 'Product'>; */
 const ActionTile_Calories = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
   const [UserInfo] = useContext(ContextUser);
   const [calories, setCalories] = useState(0);
